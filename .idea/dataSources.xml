@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="myDB" uuid="8c3a9441-aeb0-4402-b310-8c40910749eb">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/institut</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <auto-close enable="true" timeout="3" />
+    </data-source>
+    <data-source source="LOCAL" name="java" uuid="0c2933e4-116d-4d10-a757-5e5564ca7df7">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/java</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <auto-close enable="true" timeout="3" />
+    </data-source>
+  </component>
+</project>
