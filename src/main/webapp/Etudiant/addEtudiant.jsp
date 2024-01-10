@@ -1,6 +1,7 @@
-<%@ page import="DAO.NiveauDAO" %>
+<%@ page import="Services.NiveauDAO" %>
 <%@ page import="entity.Niveau" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="Services.NiveauService" %><%--
   Created by IntelliJ IDEA.
   User: oussa
   Date: 10/01/2024
@@ -16,8 +17,8 @@
 
     <h1>oussama</h1>
     <%
-        NiveauDAO niveauDAO = new NiveauDAO();
-        List<Niveau> niveauxList = niveauDAO.getAllNiveaux();
+        NiveauService niveaus = new NiveauService();
+        List<Niveau> niveauxList = niveaus.getAllNiveaux();
     %>
     <form  action="../addEtudiant" method="post">
         <label>First Name</label>
@@ -25,10 +26,10 @@
         <label>Last Name</label>
         <input type="text" name="prenom" /><br>
 
-        <select name="niveauId"> <!-- Assurez-vous d'ajouter un nom à la balise select pour pouvoir récupérer la valeur sélectionnée -->
+        <select name="niveauId">
             <option value="">Sélectionnez un niveau</option>
 
-            <!-- Boucle pour afficher les options en fonction des niveaux récupérés depuis la base de données -->
+
             <% for (Niveau niveau : niveauxList) { %>
             <option value="<%= niveau.getId() %>"><%= niveau.getNomNiveau() %></option>
             <% } %>

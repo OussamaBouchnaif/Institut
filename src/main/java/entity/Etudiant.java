@@ -17,26 +17,27 @@ public class Etudiant {
     @JoinColumn(name = "groupe_id") // le nom de la colonne qui référence l'ID du niveau dans la table des étudiants
     private Groupe groupe;
 
-    public Etudiant(String firstName, String lastName, Niveau niveau) {
+    public Etudiant(String firstName, String lastName, Niveau niveau,Groupe groupe) {
         FirstName = firstName;
         LastName = lastName;
         this.niveau = niveau;
+        this.groupe = groupe;
     }
 
     public Etudiant() {
 
     }
 
-    public Niveau getNiveau() {
-        return niveau;
+    public String getNiveau() {
+        return niveau.getNomNiveau();
     }
 
     public void setNiveau(Niveau niveau) {
         this.niveau = niveau;
     }
 
-    public Groupe getGroupe() {
-        return groupe;
+    public String getGroupe() {
+        return groupe.getNomGroupe();
     }
 
     public void setGroupe(Groupe groupe) {
