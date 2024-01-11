@@ -18,6 +18,7 @@ public class EtudiantService {
         return etudiantService;
     }
     private EtudiantService() {
+
         emf = Persistence.createEntityManagerFactory("default");
     }
 
@@ -72,7 +73,6 @@ public class EtudiantService {
             Niveau niveau = em.find(Niveau.class,niveauId);
             Groupe groupe = em.find(Groupe.class,groupeId);
 
-
             if (etudiant != null ) {
                 etudiant.setFirstName(nom);
                 etudiant.setLastName(prenom);
@@ -96,11 +96,7 @@ public class EtudiantService {
 
         try {
             em.getTransaction().begin();
-
-
             Etudiant etudiantToDelete = em.find(Etudiant.class, id);
-
-
             if (etudiantToDelete != null) {
                 em.remove(etudiantToDelete);
                 em.getTransaction().commit();

@@ -46,6 +46,7 @@
             <td><%= e.getLastName() %></td>
             <td><%= e.getGroupe() %></td>
             <td><%= e.getNiveau() %></td>
+            <td class="text-center"><a href="${pageContext.request.contextPath}/paiementEtudiant?id=<%= e.getId() %>"><i class="fa-solid fa-money-bill text-warning"></i></a></td>
             <td class="text-center"><a href="${pageContext.request.contextPath}/deleteEtudiant?id=<%= e.getId() %>"><i class="fa-solid fa-trash text-danger"></i></a></td>
             <td  class="text-center"><a href="${pageContext.request.contextPath}/updateEtudiant?id=<%= e.getId() %>"><i  class="fa-solid fa-pen-to-square text-warning"></i></a></td>
 
@@ -59,12 +60,12 @@
     <%
     } else {
     %>
-    <p>Aucun todo pour le moment.</p>
+    <p>Aucun Etudiant pour le moment.</p>
     <%
         }
     %>
 
-    <a href="${pageContext.request.contextPath}/addEtudiant">Go to AddServlet</a>
+    <a href="${pageContext.request.contextPath}/addEtudiant">Ajouter un Etudiant</a>
 </div>
 </body>
 </html>
