@@ -1,11 +1,5 @@
 <%@ page import="Services.EtudiantService" %>
-<%@ page import="entity.Etudiant" %><%--
-  Created by IntelliJ IDEA.
-  User: oussa
-  Date: 11/01/2024
-  Time: 15:11
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="entity.Etudiant" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

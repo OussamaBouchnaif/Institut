@@ -3,6 +3,8 @@
 
 <%@ page import="java.util.List" %>
 <%@ page import="Services.EtudiantService" %>
+<%@ page import="Services.FormateurService" %>
+<%@ page import="entity.Formateur" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,11 +14,11 @@
 </head>
 <body>
 <div class="container">
-    <h1>Gestion des Etudiants</h1>
+    <h1>Gestion des Formateurs</h1>
     <%
-        EtudiantService ed = EtudiantService.getEtudiantService();
-        List<Etudiant> etudiants = (List<Etudiant>) ed.getAllEtudiants();
-        if (etudiants != null) {
+        FormateurService fs = FormateurService.getFormateur();
+        List<Formateur> formateurs = (List<Formateur>) fs.getAllFormateur();
+        if (formateurs != null) {
 
     %>
 
@@ -32,17 +34,18 @@
         </tr>
         </thead>
         <tbody>
-            <%for (Etudiant e : etudiants) {
+            <%for (Formateur f : formateurs) {
                     %>
         <tr>
-            <td><%= e.getId() %></td>
-            <td><%= e.getFirstName() %></td>
-            <td><%= e.getLastName() %></td>
-            <td><%= e.getGroupe() %></td>
-            <td><%= e.getNiveau() %></td>
-            <td class="text-center"><a href="${pageContext.request.contextPath}/paiementEtudiant?id=<%= e.getId() %>"><i class="fa-solid fa-money-bill text-warning"></i></a></td>
-            <td class="text-center"><a href="${pageContext.request.contextPath}/deleteEtudiant?id=<%= e.getId() %>"><i class="fa-solid fa-trash text-danger"></i></a></td>
-            <td  class="text-center"><a href="${pageContext.request.contextPath}/updateEtudiant?id=<%= e.getId() %>"><i  class="fa-solid fa-pen-to-square text-warning"></i></a></td>
+            <td><%= f.getId() %></td>
+            <td><%= f.getNom() %></td>
+            <td><%= f.getPrenom() %></td>
+            <td><%= f.getAdresse() %></td>
+            <td><%= f.getNumeroTelephone() %></td>
+            <td><%= f.getEmail() %></td>
+
+            <td class="text-center"><a href="${pageContext.request.contextPath}/deleteFormateur?id=<%= f.getId() %>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+            <td  class="text-center"><a href="${pageContext.request.contextPath}/updateFormateur?id=<%= f.getId() %>"><i  class="fa-solid fa-pen-to-square text-warning"></i></a></td>
 
         </tr>
             <%
@@ -54,11 +57,11 @@
     <%
     } else {
     %>
-    <p>Aucun Etudiant pour le moment.</p>
+    <p>Aucun Formateur pour le moment.</p>
     <%
         }
     %>
-    <a href="${pageContext.request.contextPath}/addEtudiant">Ajouter un Etudiant</a>
+    <a href="${pageContext.request.contextPath}/addFormateur">Ajouter un Formateur</a>
 </div>
 </body>
 </html>

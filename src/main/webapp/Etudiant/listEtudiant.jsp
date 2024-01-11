@@ -2,13 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 
 <%@ page import="java.util.List" %>
-<%@ page import="Services.EtudiantService" %><%--
-  Created by IntelliJ IDEA.
-  User: oussa
-  Date: 10/01/2024
-  Time: 22:17
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="Services.EtudiantService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -23,7 +17,7 @@
         EtudiantService ed = EtudiantService.getEtudiantService();
         List<Etudiant> etudiants = (List<Etudiant>) ed.getAllEtudiants();
         if (etudiants != null) {
-            int index = 0;
+
     %>
 
     <table id="todoTable" class="table table-hover mt-5" >
@@ -52,7 +46,7 @@
 
         </tr>
             <%
-                index++;
+
                     }
                 %>
         <tbody>
@@ -64,7 +58,6 @@
     <%
         }
     %>
-
     <a href="${pageContext.request.contextPath}/addEtudiant">Ajouter un Etudiant</a>
 </div>
 </body>
