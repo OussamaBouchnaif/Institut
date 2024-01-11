@@ -10,8 +10,14 @@ import jakarta.persistence.Persistence;
 import java.util.List;
 
 public class EtudiantService {
+    private static EtudiantService etudiantService = new EtudiantService();
+
     private EntityManagerFactory emf;
-    public EtudiantService() {
+    public static EtudiantService getEtudiantService()
+    {
+        return etudiantService;
+    }
+    private EtudiantService() {
         emf = Persistence.createEntityManagerFactory("default");
     }
 
@@ -23,7 +29,16 @@ public class EtudiantService {
             em.close();
         }
     }
-    public void ajouterEtudiant(String nom, String prenom, long niveauId,long groupeId) {
+    public Etudiant getEtudiantById( long id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Etudiant e = em.createQuery("SELECT n FROM Etudiant n WHERE n.id = :id", Etudiant.class).setParameter("id", id).getSingleResult();
+            return  e;
+        } finally {
+            em.close();
+        }
+    }
+    public void cerateEtudiant(String nom, String prenom, long niveauId,long groupeId) {
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -33,14 +48,66 @@ public class EtudiantService {
             Niveau niveau = em.find(Niveau.class, niveauId);
             Groupe groupe = em.find(Groupe.class, groupeId);
 
-            if (niveau != null) {
+            if (niveau != null && groupe != null) {
                 Etudiant etudiant = new Etudiant(nom, prenom,niveau,groupe);
 
                 em.persist(etudiant);
                 em.getTransaction().commit();
             } else {
-                // Gérer le cas où le niveau avec l'ID spécifié n'a pas été trouvé
+
                 em.getTransaction().rollback();
+            }
+
+        } finally {
+            em.close();
+        }
+    }
+    public void updateEtudiant(long idEtudiant , String nom, String prenom, long niveauId,long groupeId) {
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            em.getTransaction().begin();
+
+            Etudiant etudiant = em.find(Etudiant.class,idEtudiant);
+            Niveau niveau = em.find(Niveau.class,niveauId);
+            Groupe groupe = em.find(Groupe.class,groupeId);
+
+
+            if (etudiant != null ) {
+                etudiant.setFirstName(nom);
+                etudiant.setLastName(prenom);
+                etudiant.setNiveau(niveau);
+                etudiant.setGroupe(groupe);
+
+                em.persist(etudiant);
+                em.getTransaction().commit();
+            } else {
+
+                em.getTransaction().rollback();
+            }
+
+        } finally {
+            em.close();
+        }
+    }
+    public void deleteEtudiant(long id)
+    {
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            em.getTransaction().begin();
+
+
+            Etudiant etudiantToDelete = em.find(Etudiant.class, id);
+
+
+            if (etudiantToDelete != null) {
+                em.remove(etudiantToDelete);
+                em.getTransaction().commit();
+                System.out.println("Étudiant supprimé avec succès !");
+            } else {
+
+                System.out.println("Étudiant non trouvé avec l'ID : " + id);
             }
 
         } finally {

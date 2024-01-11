@@ -20,7 +20,7 @@
 <div class="container">
     <h1>Gestion des Etudiants</h1>
     <%
-        EtudiantService ed = new EtudiantService();
+        EtudiantService ed = EtudiantService.getEtudiantService();
         List<Etudiant> etudiants = (List<Etudiant>) ed.getAllEtudiants();
         if (etudiants != null) {
             int index = 0;
@@ -46,8 +46,8 @@
             <td><%= e.getLastName() %></td>
             <td><%= e.getGroupe() %></td>
             <td><%= e.getNiveau() %></td>
-            <td class="text-center"><a href="remove?id=<%= e.getId() %>"><i class="fa-solid fa-trash text-danger"></i></a></td>
-            <td  class="text-center"><a href="update.jsp?id=<%= e.getId() %>"><i  class="fa-solid fa-pen-to-square text-warning"></i></a></td>
+            <td class="text-center"><a href="${pageContext.request.contextPath}/deleteEtudiant?id=<%= e.getId() %>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+            <td  class="text-center"><a href="${pageContext.request.contextPath}/updateEtudiant?id=<%= e.getId() %>"><i  class="fa-solid fa-pen-to-square text-warning"></i></a></td>
 
         </tr>
             <%
@@ -64,7 +64,7 @@
         }
     %>
 
-    <a href="/addEtudiant">Go to AddServlet</a>
+    <a href="${pageContext.request.contextPath}/addEtudiant">Go to AddServlet</a>
 </div>
 </body>
 </html>

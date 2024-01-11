@@ -1,13 +1,6 @@
 package com.example.project_java.Etudiant;
 
 import Services.EtudiantService;
-import entity.Etudiant;
-import entity.Groupe;
-import entity.Niveau;
-import entity.Paiement;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,19 +8,20 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
-@WebServlet("/addEtudiant")
-public class AddServlet extends HttpServlet {
+@WebServlet("/updateEtudiant")
+public class UpdateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("Etudiant/addEtudiant.jsp");
+        String idParam = req.getParameter("id");
+        long id = Long.parseLong(idParam);
+        resp.sendRedirect("Etudiant/updateEtudiant.jsp?id="+id);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        String id = req.getParameter("id");
+        long idE = Long.parseLong(id);
         String nom = req.getParameter("nom");
         String prenom = req.getParameter("prenom");
         String groupeId = req.getParameter("groupeId");
@@ -38,12 +32,11 @@ public class AddServlet extends HttpServlet {
             long gId = Long.parseLong(groupeId);
             long nId = Long.parseLong(niveauId);
             EtudiantService e = EtudiantService.getEtudiantService();
-            e.cerateEtudiant(nom,prenom,nId,gId);
+            e.updateEtudiant(idE,nom,prenom,nId,gId);
             resp.sendRedirect("Etudiant/listEtudiant.jsp");
         }
         else{
-            resp.sendRedirect("Etudiant/addEtudiant.jsp");
+            resp.sendRedirect("Etudiant/updateEtudiant.jsp");
         }
-
     }
 }
