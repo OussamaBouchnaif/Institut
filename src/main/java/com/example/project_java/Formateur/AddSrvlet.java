@@ -3,6 +3,7 @@ package com.example.project_java.Formateur;
 import Services.EtudiantService;
 import Services.FormateurService;
 import com.example.project_java.HelloServlet;
+import entity.Factory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,13 +24,14 @@ public class AddSrvlet extends HelloServlet {
         String email = req.getParameter("email");
         String adress = req.getParameter("adress");
         String tele = req.getParameter("tele");
+        String ville = "";
 
 
         if(!nom.isEmpty() && !prenom.isEmpty() && !email.isEmpty() && !adress.isEmpty() && !tele.isEmpty() )
         {
 
-            FormateurService fs = FormateurService.getFormateur();
-            fs.cerateFormateur(nom,prenom,adress,tele,email);
+            //FormateurService fs = Factory.get(FormateurService.class);
+            //fs.cerateFormateur(nom,prenom,adress,tele,email,ville);
             resp.sendRedirect("Formateur/listFormateur.jsp");
         }
         else{

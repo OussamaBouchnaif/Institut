@@ -11,12 +11,7 @@ public class Main {
         Groupe g = new Groupe("ga");
         Niveau n = new Niveau("a1","scqscqdc");
 
-        Etudiant e = new Etudiant();
-        e.setFirstName("oussama");
-        e.setLastName("bouchnaif");
-        e.setGroupe(g);
-        e.setNiveau(n);
-        Paiement p = new Paiement(17,"pypal",e);
+        Etudiant e = new Etudiant("oussama","bouchnaif","addd","0415555",n,g);
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
         EntityManager em = emf.createEntityManager();
@@ -24,7 +19,6 @@ public class Main {
         em.persist(n);
         em.persist(g);
         em.persist(e);
-        em.persist(p);
         em.getTransaction().commit();
         em.close();
         emf.close();

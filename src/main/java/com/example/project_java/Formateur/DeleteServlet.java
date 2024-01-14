@@ -17,8 +17,8 @@ public class DeleteServlet extends HttpServlet {
         String id = req.getParameter("id");
         long idE = Long.parseLong(id);
 
-        FormateurService fs = FormateurService.getFormateur();
-        fs.deleteFormateur(idE);
+        //FormateurService fs = FormateurService.getFormateur();
+        //fs.deleteFormateur(idE);
         resp.sendRedirect("Formateur/listFormateur.jsp");
     }
 }

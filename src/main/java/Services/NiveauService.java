@@ -6,13 +6,10 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import java.util.List;
 public class NiveauService {
-    private  static NiveauService ns = new NiveauService();
+
     private EntityManagerFactory emf;
-    public static NiveauService GetNiveauService()
-    {
-        return ns;
-    }
-    private NiveauService() {
+
+    public NiveauService() {
         emf = Persistence.createEntityManagerFactory("default");
     }
 

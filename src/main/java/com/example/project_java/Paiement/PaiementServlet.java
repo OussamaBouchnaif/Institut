@@ -27,8 +27,8 @@ public class PaiementServlet extends HttpServlet {
         String methode = req.getParameter("methode");
         if(montant > 0 && methode != "Sélectionnez une methode")
         {
-            PaiementService ps = PaiementService.getPaimentService();
-            ps.createPaiement(idE,montant,methode);
+            //PaiementService ps = PaiementService.getPaimentService();
+            //ps.createPaiement(idE,montant,methode);
             resp.sendRedirect("Etudiant/listEtudiant.jsp");
         }
         else

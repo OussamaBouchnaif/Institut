@@ -17,5 +17,13 @@
       <working-dir>$ProjectFileDir$</working-dir>
       <auto-close enable="true" timeout="3" />
     </data-source>
+    <data-source source="LOCAL" name="test@localhost" uuid="a9b3b227-8661-4320-8609-53b8e1e3b8a5">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/test</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <auto-close enable="true" timeout="3" />
+    </data-source>
   </component>
 </project>

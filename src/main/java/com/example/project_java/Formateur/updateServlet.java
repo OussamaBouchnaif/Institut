@@ -32,8 +32,8 @@ public class updateServlet extends HttpServlet {
         if(!nom.isEmpty() && !prenom.isEmpty() && !email.isEmpty() && !adress.isEmpty() && !tele.isEmpty() )
         {
 
-            FormateurService fs = FormateurService.getFormateur();
-            fs.updateFormateur(idE,nom,prenom,adress,tele,email);
+            //FormateurService fs = FormateurService.getFormateur();
+            //fs.updateFormateur(idE,nom,prenom,adress,tele,email);
             resp.sendRedirect("Formateur/listFormateur.jsp");
         }
         else{

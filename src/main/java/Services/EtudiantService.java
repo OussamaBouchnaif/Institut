@@ -3,24 +3,26 @@ package Services;
 import entity.Etudiant;
 import entity.Groupe;
 import entity.Niveau;
+import jakarta.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+
 import java.util.List;
-
+@ApplicationScoped
 public class EtudiantService {
-    private static EtudiantService etudiantService = new EtudiantService();
 
-    private EntityManagerFactory emf;
-    public static EtudiantService getEtudiantService()
-    {
-        return etudiantService;
-    }
-    private EtudiantService() {
 
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");;
+    public EtudiantService() {
         emf = Persistence.createEntityManagerFactory("default");
     }
+
+
+
 
     public List<Etudiant> getAllEtudiants() {
         EntityManager em = emf.createEntityManager();
@@ -39,7 +41,7 @@ public class EtudiantService {
             em.close();
         }
     }
-    public void cerateEtudiant(String nom, String prenom, long niveauId,long groupeId) {
+    public void cerateEtudiant(String nom, String prenom, long niveauId,long groupeId,String adress,String numtele) {
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -50,7 +52,7 @@ public class EtudiantService {
             Groupe groupe = em.find(Groupe.class, groupeId);
 
             if (niveau != null && groupe != null) {
-                Etudiant etudiant = new Etudiant(nom, prenom,niveau,groupe);
+                Etudiant etudiant = new Etudiant(nom,adress,numtele ,prenom,niveau,groupe);
 
                 em.persist(etudiant);
                 em.getTransaction().commit();
@@ -74,8 +76,8 @@ public class EtudiantService {
             Groupe groupe = em.find(Groupe.class,groupeId);
 
             if (etudiant != null ) {
-                etudiant.setFirstName(nom);
-                etudiant.setLastName(prenom);
+                etudiant.setNom(nom);
+                etudiant.setPrenom(prenom);
                 etudiant.setNiveau(niveau);
                 etudiant.setGroupe(groupe);
 

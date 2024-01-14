@@ -11,11 +11,8 @@ import java.util.List;
 public class GroupeService {
     private  static GroupeService gs = new GroupeService();
     private EntityManagerFactory emf;
-    public static GroupeService GetGroupeService()
-    {
-        return gs;
-    }
-    private GroupeService() {
+
+    public GroupeService() {
         emf = Persistence.createEntityManagerFactory("default");
     }
 

@@ -1,6 +1,13 @@
 package com.example.project_java.Etudiant;
 
 import Services.EtudiantService;
+import Services.GroupeService;
+import Services.NiveauService;
+import entity.Etudiant;
+import entity.Factory;
+import entity.Groupe;
+import entity.Niveau;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,14 +15,37 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
+
 @WebServlet("/updateEtudiant")
 public class UpdateServlet extends HttpServlet {
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        Factory.add(EtudiantService.class);
+        Factory.add(NiveauService.class);
+        Factory.add(GroupeService.class);
 
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String idParam = req.getParameter("id");
         long id = Long.parseLong(idParam);
-        resp.sendRedirect("Etudiant/updateEtudiant.jsp?id="+id);
+        EtudiantService etudiants = Factory.get(EtudiantService.class);
+        Etudiant etudiant = etudiants.getEtudiantById(id);
+
+        NiveauService niveaus = Factory.get(NiveauService.class);
+        List<Niveau> niveauxList = niveaus.getAllNiveaux();
+
+        GroupeService groupes = Factory.get(GroupeService.class);
+        List<Groupe> groupList = groupes.getAllGroupe();
+        req.setAttribute("groupe", groupList);
+        req.setAttribute("niveau", niveauxList);
+        req.setAttribute("etudiant", etudiant);
+        req.setAttribute("id", id);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("Etudiant/updateEtudiant.jsp");
+        dispatcher.forward(req, resp);
     }
 
     @Override
@@ -31,12 +61,12 @@ public class UpdateServlet extends HttpServlet {
         {
             long gId = Long.parseLong(groupeId);
             long nId = Long.parseLong(niveauId);
-            EtudiantService e = EtudiantService.getEtudiantService();
-            e.updateEtudiant(idE,nom,prenom,nId,gId);
-            resp.sendRedirect("Etudiant/listEtudiant.jsp");
+            EtudiantService esc = Factory.get(EtudiantService.class);
+            esc.updateEtudiant(idE,nom,prenom,nId,gId);
+            resp.sendRedirect(req.getContextPath() + "/listEtudiant");
         }
         else{
-            resp.sendRedirect("Etudiant/updateEtudiant.jsp");
+            resp.sendRedirect(req.getContextPath() + "/addEtdudiant");
         }
     }
 }

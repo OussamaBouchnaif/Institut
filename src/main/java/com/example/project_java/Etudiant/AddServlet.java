@@ -1,13 +1,12 @@
 package com.example.project_java.Etudiant;
 
 import Services.EtudiantService;
-import entity.Etudiant;
+import Services.GroupeService;
+import Services.NiveauService;
+import entity.Factory;
 import entity.Groupe;
 import entity.Niveau;
-import entity.Paiement;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,35 +14,56 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+
 
 @WebServlet("/addEtudiant")
 public class AddServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("Etudiant/addEtudiant.jsp");
+    public void init() throws jakarta.servlet.ServletException {
+        super.init();
+        Factory.add(EtudiantService.class);
+        Factory.add(NiveauService.class);
+        Factory.add(GroupeService.class);
+
     }
-
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        NiveauService niveaus = Factory.get(NiveauService.class);
+        List<Niveau> niveauxList = niveaus.getAllNiveaux();
 
+        GroupeService groupes = Factory.get(GroupeService.class);
+        List<Groupe> groupList = groupes.getAllGroupe();
+        req.setAttribute("groupe", groupList);
+        req.setAttribute("niveau", niveauxList);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("Etudiant/addEtudiant.jsp");
+        dispatcher.forward(req, resp);
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException {
         String nom = req.getParameter("nom");
         String prenom = req.getParameter("prenom");
         String groupeId = req.getParameter("groupeId");
         String niveauId = req.getParameter("niveauId");
+        String adress = req.getParameter("adress");
+        String numtele = req.getParameter("tele");
 
         if(!nom.isEmpty() && !prenom.isEmpty() && !groupeId.isEmpty() && !niveauId.isEmpty() )
         {
             long gId = Long.parseLong(groupeId);
             long nId = Long.parseLong(niveauId);
-            EtudiantService e = EtudiantService.getEtudiantService();
-            e.cerateEtudiant(nom,prenom,nId,gId);
-            resp.sendRedirect("Etudiant/listEtudiant.jsp");
+            EtudiantService esc = Factory.get(EtudiantService.class);
+            esc.cerateEtudiant(nom,prenom,nId,gId,adress,numtele);
+            resp.sendRedirect(req.getContextPath() + "/listEtudiant");
+
+
         }
         else{
-            resp.sendRedirect("Etudiant/addEtudiant.jsp");
+            resp.sendRedirect(req.getContextPath() + "/addEtudiant");
         }
 
+
     }
+
 }

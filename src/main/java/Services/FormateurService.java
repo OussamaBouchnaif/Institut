@@ -12,17 +12,14 @@ import java.util.List;
 
 public class FormateurService {
 
-    private static FormateurService ps = new FormateurService();
+
 
     private EntityManagerFactory emf;
-    private FormateurService()
+    public FormateurService()
     {
         emf = Persistence.createEntityManagerFactory("default");
     }
-    public static FormateurService getFormateur()
-    {
-        return ps;
-    }
+
     public List<Formateur> getAllFormateur() {
         EntityManager em = emf.createEntityManager();
         try {
@@ -40,12 +37,12 @@ public class FormateurService {
             em.close();
         }
     }
-    public void cerateFormateur(String nom, String prenom, String adress,String numero,String email) {
+    public void cerateFormateur(String nom, String prenom, String adress,String numero,String email,String ville) {
         EntityManager em = emf.createEntityManager();
 
         try {
             em.getTransaction().begin();
-            Formateur f = new Formateur(nom, prenom,adress,numero,email);
+            Formateur f = new Formateur(nom, prenom,adress,numero,email,ville);
             em.persist(f);
             em.getTransaction().commit();
 

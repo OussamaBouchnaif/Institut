@@ -3,31 +3,33 @@ package entity;
 import jakarta.persistence.*;
 
 @Entity
-public class Etudiant {
+
+public class Etudiant extends Personnee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String FirstName;
-    private String LastName;
+    private Long id;
     @ManyToOne
-    @JoinColumn(name = "niveau_id") // le nom de la colonne qui référence l'ID du niveau dans la table des étudiants
+    @JoinColumn(name = "niveau_id")
     private Niveau niveau;
 
     @ManyToOne
-    @JoinColumn(name = "groupe_id") // le nom de la colonne qui référence l'ID du niveau dans la table des étudiants
+    @JoinColumn(name = "groupe_id")
     private Groupe groupe;
 
-    public Etudiant(String firstName, String lastName, Niveau niveau,Groupe groupe) {
-        FirstName = firstName;
-        LastName = lastName;
+    public Etudiant(String firstName, String lastName,String adress,String numtele, Niveau niveau,Groupe groupe) {
+        super(firstName,lastName,adress,numtele);
         this.niveau = niveau;
         this.groupe = groupe;
     }
 
     public Etudiant() {
-
+        super();
     }
-
+    public Long getId()
+    {
+        return this.id;
+    }
     public String getNiveau() {
         return niveau.getNomNiveau();
     }
@@ -44,27 +46,9 @@ public class Etudiant {
         this.groupe = groupe;
     }
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
-    public String getFirstName() {
-        return FirstName;
-    }
 
-    public void setFirstName(String firstName) {
-        FirstName = firstName;
-    }
 
-    public String getLastName() {
-        return LastName;
-    }
 
-    public void setLastName(String lastName) {
-        LastName = lastName;
-    }
 }

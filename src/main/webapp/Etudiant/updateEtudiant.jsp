@@ -1,10 +1,7 @@
 
 <%@ page import="entity.Niveau" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Services.NiveauService" %>
-<%@ page import="Services.GroupeService" %>
 <%@ page import="entity.Groupe" %>
-<%@ page import="Services.EtudiantService" %>
 <%@ page import="entity.Etudiant" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -15,22 +12,28 @@
     <link rel="stylesheet" href="../resource/Style/form.css">
 </head>
 <body>
+<style>
 
+    .login{
+        margin-top: 50px;
+    }
+    .roww{
+        margin-top: 50px;
+        width: 50%;
+        margin: auto;
+        padding: 20px;
+        border: solid 1px #6a7964;
+    }
+    .roww .form_group{
+        width: 100%;
+    }
 
-
+</style>
 <%
-    String id = request.getParameter("id");
-    long idE = Long.parseLong(id);
-    EtudiantService etudiants = EtudiantService.getEtudiantService();
-    Etudiant etudiant = etudiants.getEtudiantById(idE);
-
-    NiveauService niveaus = NiveauService.GetNiveauService();
-    List<Niveau> niveauxList = niveaus.getAllNiveaux();
-
-    GroupeService groupes = GroupeService.GetGroupeService();
-    List<Groupe> groupList = groupes.getAllGroupe();
-
-
+    long id = (Long) request.getAttribute("id");
+    Etudiant etudiant = (Etudiant) request.getAttribute("etudiant");
+    List<Niveau> niveauxList = (List<Niveau>) request.getAttribute("niveau");
+    List<Groupe> groupList = (List<Groupe>) request.getAttribute("groupe");
 
 %>
 
@@ -38,14 +41,14 @@
     <div class="roww">
         <div class="user-actions">
             <form action="${pageContext.request.contextPath}/updateEtudiant" method="post">
-                <input type="hidden" name="id" value="<%= idE %>">
+                <input type="hidden" name="id" value="<%= id %>">
                 <div class="form_group">
                     <label>First Name<span>*</span></label>
-                    <input type="text" class="form-control" name="nom" value="<%= etudiant.getFirstName()%>" /><br>
+                    <input type="text" class="form-control" name="nom" value="<%= etudiant.getNom()%>" /><br>
                 </div>
                 <div class="form_group">
                     <label>Last Name  <span>*</span></label>
-                    <input type="text" class="form-control" name="prenom" value="<%= etudiant.getLastName()%>"/><br>
+                    <input type="text" class="form-control" name="prenom" value="<%= etudiant.getPrenom()%>"/><br>
                 </div>
                 <select name="niveauId" class="form-select">
                     <option value="">Sélectionnez un niveau</option>

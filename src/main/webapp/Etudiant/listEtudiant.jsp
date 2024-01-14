@@ -3,6 +3,7 @@
 
 <%@ page import="java.util.List" %>
 <%@ page import="Services.EtudiantService" %>
+<%@ page import="entity.Factory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,8 +15,7 @@
 <div class="container">
     <h1>Gestion des Etudiants</h1>
     <%
-        EtudiantService ed = EtudiantService.getEtudiantService();
-        List<Etudiant> etudiants = (List<Etudiant>) ed.getAllEtudiants();
+        List<Etudiant> etudiants = (List<Etudiant>) request.getAttribute("etudiants");
         if (etudiants != null) {
 
     %>
@@ -36,8 +36,8 @@
                     %>
         <tr>
             <td><%= e.getId() %></td>
-            <td><%= e.getFirstName() %></td>
-            <td><%= e.getLastName() %></td>
+            <td><%= e.getNom() %></td>
+            <td><%= e.getPrenom() %></td>
             <td><%= e.getGroupe() %></td>
             <td><%= e.getNiveau() %></td>
             <td class="text-center"><a href="${pageContext.request.contextPath}/paiementEtudiant?id=<%= e.getId() %>"><i class="fa-solid fa-money-bill text-warning"></i></a></td>
