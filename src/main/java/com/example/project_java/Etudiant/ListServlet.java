@@ -2,6 +2,8 @@ package com.example.project_java.Etudiant;
 
 
 import Services.EtudiantService;
+import Services.FormateurService;
+import Services.NiveauService;
 import entity.Etudiant;
 import entity.Factory;
 import jakarta.servlet.RequestDispatcher;
@@ -17,6 +19,7 @@ import java.util.List;
 
 @WebServlet(name="listEtudiant",value="/listEtudiant")
 public class ListServlet extends HttpServlet {
+
     @Override
     public void init() throws ServletException {
         super.init();

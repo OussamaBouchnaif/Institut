@@ -12,7 +12,7 @@ public class PaiementService {
 
     private EntityManagerFactory emf;
 
-    private PaiementService()
+    public PaiementService()
     {
         emf = Persistence.createEntityManagerFactory("default");
     }

@@ -8,6 +8,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+
 import java.util.List;
 
 public class FormateurService {
@@ -17,6 +18,7 @@ public class FormateurService {
     private EntityManagerFactory emf;
     public FormateurService()
     {
+
         emf = Persistence.createEntityManagerFactory("default");
     }
 

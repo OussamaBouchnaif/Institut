@@ -4,16 +4,27 @@ import Services.EtudiantService;
 import Services.FormateurService;
 import com.example.project_java.HelloServlet;
 import entity.Factory;
+import entity.Formateur;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
+
 @WebServlet("/addFormateur")
 public class AddSrvlet extends HelloServlet {
+
+    @Override
+    public void init()
+    {
+        super.init();
+        Factory.add(FormateurService.class);
+    }
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         response.sendRedirect("Formateur/addFormateur.jsp");
     }
 
@@ -30,12 +41,12 @@ public class AddSrvlet extends HelloServlet {
         if(!nom.isEmpty() && !prenom.isEmpty() && !email.isEmpty() && !adress.isEmpty() && !tele.isEmpty() )
         {
 
-            //FormateurService fs = Factory.get(FormateurService.class);
-            //fs.cerateFormateur(nom,prenom,adress,tele,email,ville);
-            resp.sendRedirect("Formateur/listFormateur.jsp");
+            FormateurService fs = Factory.get(FormateurService.class);
+            fs.cerateFormateur(nom,prenom,adress,tele,email,ville);
+            resp.sendRedirect(req.getContextPath() + "/listFormateur");
         }
         else{
-            resp.sendRedirect("Formateur/addFormateur.jsp");
+            resp.sendRedirect(req.getContextPath() + "/addFormateur");
         }
     }
 }

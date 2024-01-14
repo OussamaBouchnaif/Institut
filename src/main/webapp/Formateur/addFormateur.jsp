@@ -11,12 +11,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/4598e20a86.js" crossorigin="anonymous"></script>
     <title>Add Formateur</title>
-    <link rel="stylesheet" href="../resource/Style/form.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/Style/style.css">
 </head>
 <body>
+<jsp:include page="../head.jsp" />
 
+<style>
 
+    .login{
+        margin-top: 50px;
+    }
+    .roww{
+        margin-top: 50px;
+        width: 50%;
+        margin: auto;
+        padding: 20px;
+        border: solid 1px #6a7964;
+    }
+    .roww .form_group{
+        width: 100%;
+    }
 
+</style>
 
 
 <div class="container login">

@@ -4,7 +4,7 @@ import entity.Etudiant;
 import entity.Groupe;
 import entity.Niveau;
 import jakarta.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -16,8 +16,9 @@ import java.util.List;
 public class EtudiantService {
 
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");;
+    private EntityManagerFactory emf ;
     public EtudiantService() {
+
         emf = Persistence.createEntityManagerFactory("default");
     }
 

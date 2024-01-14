@@ -8,17 +8,14 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/4598e20a86.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/Style/style.css">
     <title>Dashbord</title>
 </head>
 <body>
-    <div class="container">
-        <h1 class="container mt-5">Gestion Institut</h1><br>
-
-        <a href="listEtudiant" class="btn btn-outline-info">Gestion des Etudiants</a><br><br>
-        <a href="listFormateur" class="btn btn-outline-info">Gestion des Formateurs</a><br><br>
-        <a href="listEtudiant" class="btn btn-outline-info">Gestion des Salle</a><br><br>
-        <a href="listEtudiant" class="btn btn-outline-info">Gestion des Seance</a><br><br>
-
+   <jsp:include page="head.jsp"/>
+    <div class="content mt-5">
+        <h1>Gestion Institut</h1>
     </div>
+
 </body>
 </html>

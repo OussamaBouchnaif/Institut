@@ -5,19 +5,22 @@
 <%@ page import="Services.EtudiantService" %>
 <%@ page import="Services.FormateurService" %>
 <%@ page import="entity.Formateur" %>
+<%@ page import="entity.Factory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/4598e20a86.js" crossorigin="anonymous"></script>
-    <title>Etudiant</title>
+    <title>Formateur</title>
 </head>
 <body>
+<jsp:include page="../head.jsp" />
 <div class="container">
     <h1>Gestion des Formateurs</h1>
+    <a href="${pageContext.request.contextPath}/addFormateur" class="btn btn-primary">Ajouter un Formateur</a>
     <%
-        FormateurService fs = FormateurService.getFormateur();
-        List<Formateur> formateurs = (List<Formateur>) fs.getAllFormateur();
+
+        List<Formateur> formateurs = (List<Formateur>) request.getAttribute("formateurs");
         if (formateurs != null) {
 
     %>
@@ -28,8 +31,9 @@
             <th scope="col">Id</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
-            <th scope="col">Groupe</th>
-            <th scope="col">Niveau</th>
+            <th scope="col">Adress</th>
+            <th scope="col">Tele</th>
+            <th scope="col">Email</th>
             <th scope="col" class="text-center" colspan="2"> Actions </th>
         </tr>
         </thead>
@@ -61,7 +65,7 @@
     <%
         }
     %>
-    <a href="${pageContext.request.contextPath}/addFormateur">Ajouter un Formateur</a>
+
 </div>
 </body>
 </html>

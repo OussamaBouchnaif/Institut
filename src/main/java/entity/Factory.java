@@ -13,7 +13,8 @@ public class Factory {
 
     public static <T> void add(Class<T> serviceClass) {
         try {
-            instances.put(serviceClass, serviceClass.getDeclaredConstructor().newInstance());
+            T instance = serviceClass.getDeclaredConstructor().newInstance();
+            instances.put(serviceClass, instance);
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new RuntimeException("Error creating instance for class: " + serviceClass.getName(), e);
         }
@@ -23,6 +24,7 @@ public class Factory {
     public static <T> T get(Class<T> serviceClass) {
         return (T) instances.get(serviceClass);
     }
+
 
 
 

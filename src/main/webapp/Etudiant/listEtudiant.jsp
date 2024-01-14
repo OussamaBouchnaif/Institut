@@ -12,8 +12,12 @@
     <title>Etudiant</title>
 </head>
 <body>
+<jsp:include page="../head.jsp" />
 <div class="container">
     <h1>Gestion des Etudiants</h1>
+    <a href="${pageContext.request.contextPath}/addEtudiant" class="btn btn-primary">Ajouter un Etudiant</a>
+    <a href="${pageContext.request.contextPath}/addEtudiant" class="btn btn-success">Ajouter un Groupe</a>
+    <a href="${pageContext.request.contextPath}/addEtudiant" class="btn btn-info">Ajouter un Niveau</a>
     <%
         List<Etudiant> etudiants = (List<Etudiant>) request.getAttribute("etudiants");
         if (etudiants != null) {

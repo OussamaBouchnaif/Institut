@@ -6,44 +6,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/4598e20a86.js" crossorigin="anonymous"></script>
     <title>Paiement</title>
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/Style/style.css">
 </head>
 <body>
-<style>
-
-    .login{
-        margin-top: 50px;
-    }
-    .roww{
-        margin-top: 50px;
-        width: 50%;
-        margin: auto;
-        padding: 20px;
-        border: solid 1px #6a7964;
-    }
-    .roww .form_group{
-        width: 100%;
-    }
-</style>
-
+<jsp:include page="../head.jsp" />
 
 <%
-        String id = request.getParameter("id");
-        long idE = Long.parseLong(id);
-        EtudiantService etudiants = EtudiantService.getEtudiantService();
-        Etudiant etudiant = etudiants.getEtudiantById(idE);
+        Long id = (Long)request.getAttribute("id");
+        Etudiant etudiant = (Etudiant)request.getAttribute("etudiant") ;
 %>
-<div class="container login">
+<div class="container login ">
     <div class="roww">
         <div class="user-actions">
-            <form action="${pageContext.request.contextPath}/paiementEtudiant?idE=<%= idE %>" method="post">
-                <input type="hidden" name="" value="<%= idE %>" />
+            <form action="${pageContext.request.contextPath}/paiementEtudiant?idE=<%= id %>" method="post">
+                <input type="hidden" name="" value="<%= id %>" />
                 <div class="form_group">
                     <label>First Name<span>*</span></label>
-                    <input type="text" class="form-control" value="<%= etudiant.getFirstName() %>" name="nom" /><br>
+                    <input type="text" class="form-control" value="<%= etudiant.getNom() %>" name="nom" /><br>
                 </div>
                 <div class="form_group">
                     <label>Last Name  <span>*</span></label>
-                    <input type="text" class="form-control" value="<%= etudiant.getLastName()%>" name="prenom" /><br>
+                    <input type="text" class="form-control" value="<%= etudiant.getPrenom()%>" name="prenom" /><br>
                 </div>
                 <div class="form_group">
                     <label>Montant <span>*</span></label>

@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class Formateur extends Personnee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String email;
     private String ville;
     public Formateur(String nom, String prenom, String adresse, String numeroTelephone, String email,String ville) {
@@ -22,6 +22,10 @@ public class Formateur extends Personnee {
     }
 
 
+    @Override
+    public Long getId() {
+        return id;
+    }
 
     public void setId(long id) {
         this.id = id;
