@@ -1,7 +1,4 @@
-import entity.Etudiant;
-import entity.Groupe;
-import entity.Niveau;
-import entity.Paiement;
+import entity.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -11,14 +8,13 @@ public class Main {
         Groupe g = new Groupe("ga");
         Niveau n = new Niveau("a1","scqscqdc");
 
-        Etudiant e = new Etudiant("oussama","bouchnaif","addd","0415555",n,g);
+        User u = new User("oussam","bouch","adress","654623","email","123");
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        em.persist(n);
-        em.persist(g);
-        em.persist(e);
+
+        em.persist(u);
         em.getTransaction().commit();
         em.close();
         emf.close();

@@ -13,23 +13,7 @@
 </head>
 <body>
 <jsp:include page="../head.jsp" />
-<style>
 
-    .login{
-        margin-top: 50px;
-    }
-    .roww{
-        margin-top: 50px;
-        width: 50%;
-        margin: auto;
-        padding: 20px;
-        border: solid 1px #6a7964;
-    }
-    .roww .form_group{
-        width: 100%;
-    }
-
-</style>
 <%
     long id = (Long) request.getAttribute("id");
     Etudiant etudiant = (Etudiant) request.getAttribute("etudiant");

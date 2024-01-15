@@ -17,9 +17,12 @@ public class EtudiantService {
 
 
     private EntityManagerFactory emf ;
+
+
     public EtudiantService() {
 
         emf = Persistence.createEntityManagerFactory("default");
+
     }
 
 

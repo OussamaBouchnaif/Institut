@@ -25,6 +25,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="listFormateur">Formateur</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="listSeance">Seance</a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link " href="">Salle</a>
