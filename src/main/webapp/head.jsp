@@ -9,32 +9,51 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/Style/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="listEtudiant">Etudiant <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="listFormateur">Formateur</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="listSeance">Seance</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link " href="">Salle</a>
-                </li>
-            </ul>
+    <div class="head">
+        <div class="home-content">
+            <i class='bx bx-menu' ></i>
 
         </div>
-    </nav>
+        <div class="action">
+            <div class="profile" onclick="menuToggle();">
+                <img src="image/IMG_0390.JPG" alt="">
+            </div>
+
+            <div class="menu">
+                <h3>
+                    OUSSAMA BOUCHNAIF
+                    <div>
+                        Devlopper Web
+                    </div>
+                </h3>
+                <ul>
+                    <li>
+                        <i class='bx bx-user'></i>
+                        <a href="#">Profile</a>
+                    </li>
+                    <li>
+                        <i class='bx bx-edit'></i>
+                        <a href="#">Edit Account</a>
+                    </li>
+                    <li>
+                        <i class='bx bx-log-out' ></i>
+                        <a href="#">Log out</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <script>
+            function menuToggle(){
+                const toggleMenu = document.querySelector('.menu');
+                toggleMenu.classList.toggle('active')
+            }
+        </script>
+
+    </div>
 </body>
 </html>
