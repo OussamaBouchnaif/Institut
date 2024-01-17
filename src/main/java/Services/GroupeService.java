@@ -1,25 +1,48 @@
 package Services;
 
 import entity.Groupe;
-import entity.Niveau;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class GroupeService {
-    private  static GroupeService gs = new GroupeService();
-    private EntityManagerFactory emf;
+
+    private static final GroupeService gs = new GroupeService();
+    private static EntityManagerFactory emf;
+
+    static {
+
+    }
 
     public GroupeService() {
         emf = Persistence.createEntityManagerFactory("default");
     }
 
-    public List<Groupe> getAllGroupe() {
+    public static GroupeService getInstance() {
+        return gs;
+    }
+
+    public List<Groupe> getAllGroupes() {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createQuery("SELECT n FROM Groupe n", Groupe.class).getResultList();
+            return em.createQuery("SELECT g FROM Groupe g", Groupe.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void createGroupe(String nomGroupe, LocalDateTime dateCreation) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+
+            Groupe groupe = new Groupe(nomGroupe);
+            em.persist(groupe);
+
+            em.getTransaction().commit();
         } finally {
             em.close();
         }

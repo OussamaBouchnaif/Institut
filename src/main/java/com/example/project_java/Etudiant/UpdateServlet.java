@@ -38,7 +38,7 @@ public class UpdateServlet extends HttpServlet {
         List<Niveau> niveauxList = niveaus.getAllNiveaux();
 
         GroupeService groupes = Factory.get(GroupeService.class);
-        List<Groupe> groupList = groupes.getAllGroupe();
+        List<Groupe> groupList = groupes.getAllGroupes();
         req.setAttribute("groupe", groupList);
         req.setAttribute("niveau", niveauxList);
         req.setAttribute("etudiant", etudiant);

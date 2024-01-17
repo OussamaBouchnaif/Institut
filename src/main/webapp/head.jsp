@@ -30,7 +30,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " href="">Salle</a>
+                    <a class="nav-link " href="listSalle">Salle</a>
                 </li>
             </ul>
 
