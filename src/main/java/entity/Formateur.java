@@ -39,4 +39,12 @@ public class Formateur extends Personnee {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
 }
