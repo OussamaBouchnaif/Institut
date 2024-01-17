@@ -37,7 +37,7 @@ public class UpdateServlet extends HttpServlet {
         List<Formateur> formateurList = formateur.getAllFormateur();
 
         GroupeService groupes = Factory.get(GroupeService.class);
-        List<Groupe> groupList = groupes.getAllGroupe();
+        List<Groupe> groupList = groupes.getAllGroupes();
 
         SalleService salle = Factory.get(SalleService.class);
         List<Salle> salleList = salle.getAllSalle();
@@ -50,7 +50,7 @@ public class UpdateServlet extends HttpServlet {
         req.setAttribute("salle",salleList );
         req.setAttribute("seance",s);
         req.setAttribute("id", id);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("Seance/updateSeance.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("Seance/updateSalle.jsp");
         dispatcher.forward(req, resp);
     }
 
