@@ -1,6 +1,7 @@
 package Services;
 
 import entity.Etudiant;
+import entity.Groupe;
 import entity.Paiement;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -23,6 +24,17 @@ public class PaiementService {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createQuery("SELECT p FROM Paiement p", Paiement.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+
+    public List<Paiement> getAllPaiement()
+    {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery("SELECT g FROM Paiement g ", Paiement.class).getResultList();
         } finally {
             em.close();
         }

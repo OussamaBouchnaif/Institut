@@ -38,7 +38,7 @@ public class AddSevlet extends HttpServlet {
         req.setAttribute("groupe", groupList);
         req.setAttribute("formateur",formateurList );
         req.setAttribute("salle",salleList );
-        RequestDispatcher dispatcher = req.getRequestDispatcher("Seance/addSalle.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("Seance/addSeance.jsp");
         dispatcher.forward(req, resp);
     }
 

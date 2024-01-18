@@ -60,4 +60,11 @@ public class Groupe {
     public void setMembres(List<Etudiant> membres) {
         this.membres = membres;
     }
+
+
+    public String toString() {
+        return this.getNomGroupe();
+    }
 }
+
+

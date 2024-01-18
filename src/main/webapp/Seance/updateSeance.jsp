@@ -19,53 +19,61 @@
   Seance seance =(Seance) request.getAttribute("seance");
 
 %>
-<jsp:include page="../head.jsp" />
-<div class="container login">
-  <div class="roww">
-    <div class="user-actions">
-      <form action="${pageContext.request.contextPath}/updateSeance" method="post">
-        <div class="form_group">
-          <input type="hidden" value="<%= id %>" name="id" />
-          <label>Date Debut<span>*</span></label>
-          <input type="datetime-local" class="form-control" value="<%= seance.getDateDebut() %>" name="datedebut" /><br>
+  <jsp:include page="../sidbar.jsp" />
+  <section class="home-section">
+    <jsp:include page="../head.jsp" />
+    <div class="content">
+      <div class="container ">
+        <div class="roww">
+          <div class="user-actions">
+            <form action="${pageContext.request.contextPath}/updateSeance" method="post">
+              <div class="form_group">
+                <input type="hidden" value="<%= id %>" name="id" />
+                <label>Date Debut<span>*</span></label>
+                <input type="datetime-local" class="form-control" value="<%= seance.getDateDebut() %>" name="datedebut" /><br>
+              </div>
+              <div class="form_group">
+                <label>Date Debut<span>*</span></label>
+                <input type="datetime-local" class="form-control" value="<%= seance.getDateFin() %>" name="datefin" /><br>
+              </div>
+
+              <select name="salleid" class="form-select" >
+                <option value=""><%= seance.getSalle().getNomSalle() %></option>
+
+
+                <% for (Salle salle : sallList) { %>
+                <option value="<%= salle.getId() %>"><%= salle.getNomSalle() %></option>
+                <% } %>
+              </select><br>
+              <select name="groupeId" class="form-select">
+                <option value=""><%= seance.getGroupe().getNomGroupe() %></option>
+
+
+                <% for (Groupe groupe : groupList) { %>
+                <option value="<%= groupe.getId() %>"><%= groupe.getNomGroupe() %></option>
+                <% } %>
+              </select><br>
+              <select name="formateurid" class="form-select">
+                <option value=""><%= seance.getFormateur().getNom() %></option>
+
+
+                <% for (Formateur formateur : formateurList) { %>
+                <option value="<%= formateur.getId() %>"><%= formateur.getNom() %></option>
+                <% } %>
+              </select><br>
+              <div class="form_group group_3 ">
+                <button class="btn btn-primary" type="submit">Update Seance</button>
+              </div>
+            </form>
+
+          </div>
         </div>
-        <div class="form_group">
-          <label>Date Debut<span>*</span></label>
-          <input type="datetime-local" class="form-control" value="<%= seance.getDateFin() %>" name="datefin" /><br>
-        </div>
-
-        <select name="salleid" class="form-select" >
-          <option value=""><%= seance.getSalle().getNomSalle() %></option>
-
-
-          <% for (Salle salle : sallList) { %>
-          <option value="<%= salle.getId() %>"><%= salle.getNomSalle() %></option>
-          <% } %>
-        </select><br>
-        <select name="groupeId" class="form-select">
-          <option value=""><%= seance.getGroupe().getNomGroupe() %></option>
-
-
-          <% for (Groupe groupe : groupList) { %>
-          <option value="<%= groupe.getId() %>"><%= groupe.getNomGroupe() %></option>
-          <% } %>
-        </select><br>
-        <select name="formateurid" class="form-select">
-          <option value=""><%= seance.getFormateur().getNom() %></option>
-
-
-          <% for (Formateur formateur : formateurList) { %>
-          <option value="<%= formateur.getId() %>"><%= formateur.getNom() %></option>
-          <% } %>
-        </select><br>
-        <div class="form_group group_3 ">
-          <button class="btn btn-primary" type="submit">Update Seance</button>
-        </div>
-      </form>
+      </div>
 
     </div>
-  </div>
-</div>
+
+  </section>
+
 
 </body>
 </html>

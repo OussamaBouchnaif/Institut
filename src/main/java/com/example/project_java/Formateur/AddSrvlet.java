@@ -5,6 +5,7 @@ import Services.FormateurService;
 import com.example.project_java.HelloServlet;
 import entity.Factory;
 import entity.Formateur;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,9 +24,10 @@ public class AddSrvlet extends HelloServlet {
         Factory.add(FormateurService.class);
     }
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException ,ServletException{
 
-        response.sendRedirect("Formateur/addFormateur.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Formateur/addFormateur.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override

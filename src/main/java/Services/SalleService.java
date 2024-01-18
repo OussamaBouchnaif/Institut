@@ -42,10 +42,15 @@ public class SalleService {
         try {
             em.getTransaction().begin();
 
+<<<<<<< HEAD
             em.createNativeQuery("INSERT INTO Salle (NOMSALLE, CAPACITE) VALUES (?, ?)")
                     .setParameter(1, nomSalle)
                     .setParameter(2, capacite)
                     .executeUpdate();
+=======
+            Salle s = new Salle(nomSalle,capacite);
+            em.persist(s);
+>>>>>>> f41fc184a8ab93f83360dbfde18c6553cdd0e05f
 
             em.getTransaction().commit();
         } finally {
@@ -58,13 +63,18 @@ public class SalleService {
         try {
             em.getTransaction().begin();
 
-            em.createNativeQuery("UPDATE Salle SET NOMSALLE = ?, CAPACITE = ? WHERE id = ?")
-                    .setParameter(1, nomSalle)
-                    .setParameter(2, capacite)
-                    .setParameter(3, id)
-                    .executeUpdate();
+           Salle s = em.find(Salle.class,id);
+           if(s != null)
+           {
+               s.setCapacite(capacite);
+               s.setNomSalle(nomSalle);
+               em.getTransaction().commit();
+           }else
+           {
+               em.getTransaction().rollback();
+           }
 
-            em.getTransaction().commit();
+
 
         } finally {
             em.close();
@@ -77,12 +87,16 @@ public class SalleService {
         try {
             em.getTransaction().begin();
 
-            em.createNativeQuery("DELETE FROM Salle WHERE id = ?")
-                    .setParameter(1, id)
-                    .executeUpdate();
+            Salle s = em.find(Salle.class,id);
+            if(s != null)
+            {
+                em.remove(s);
+                em.getTransaction().commit();
+                System.out.println("Salle supprimée avec succès !");
+            }
 
-            em.getTransaction().commit();
-            System.out.println("Salle supprimée avec succès !");
+
+
         } finally {
             em.close();
         }

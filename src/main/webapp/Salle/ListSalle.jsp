@@ -11,50 +11,59 @@
 </head>
 <body>
 
-<jsp:include page="../head.jsp" />
-<%
-    List<Salle> salles = (List<Salle>) request.getAttribute("salles");
-    if (salles != null) {
-%>
+    <jsp:include page="../sidbar.jsp" />
+    <%
+        List<Salle> salles = (List<Salle>) request.getAttribute("salles");
+        if (salles != null) {
+    %>
+    <section class="home-section">
+        <jsp:include page="../head.jsp" />
+        <div class="content">
+            <div class="container">
 
-<div class="container">
-    <h2>Liste des Salles</h2>
-    <a href="${pageContext.request.contextPath}/addSalle" class="btn btn-primary mt-5">Ajouter salle</a>
+                <a href="${pageContext.request.contextPath}/addSalle" class="btn btn-primary mt-5">Ajouter salle</a>
 
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nom de la Salle</th>
-            <th>Capacité</th>
-            <th>Action</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% for (Salle salle : salles) { %>
-        <tr>
-            <td><%= salle.getId() %></td>
-            <td><%= salle.getNomSalle() %></td>
-            <td><%= salle.getCapacite() %></td>
-            <td class="text-center">
-                <a href="${pageContext.request.contextPath}/deleteSalle?id=<%= salle.getId() %>">
-                    <i class="fa-solid fa-trash text-danger"></i>
-                </a>
-            </td>
-            <td class="text-center">
-                <a href="${pageContext.request.contextPath}/updateSalle?id=<%= salle.getId() %>">
-                    <i class="fa-solid fa-pen-to-square text-warning"></i>
-                </a>
-            </td>
-        </tr>
-        <% } %>
-        </tbody>
-    </table>
-</div>
-<%
-    }
-%>
+                <table class="table table-bordered mt-5">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom de la Salle</th>
+                        <th>Capacité</th>
+                        <th>Action</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (Salle salle : salles) { %>
+                    <tr>
+                        <td><%= salle.getId() %></td>
+                        <td><%= salle.getNomSalle() %></td>
+                        <td><%= salle.getCapacite() %></td>
+                        <td class="text-center">
+                            <a href="${pageContext.request.contextPath}/deleteSalle?id=<%= salle.getId() %>">
+                                <i class="fa-solid fa-trash text-danger"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a href="${pageContext.request.contextPath}/updateSalle?id=<%= salle.getId() %>">
+                                <i class="fa-solid fa-pen-to-square text-warning"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <%
+                }
+            %>
+
+        </div>
+
+    </section>
+
+
+
 
 </body>
 </html>
