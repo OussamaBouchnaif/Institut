@@ -1,7 +1,7 @@
 /* Google Fonts Import Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 body{
-  background-color:#11101d
+
 }
 
 *{
@@ -13,8 +13,8 @@ body{
 }
 :root{
   --light:#f9f9f9;
-  --redh:rgba(233, 2, 2, 0.2);
-  --red : #DC0000;
+  --redh:#86B6F6;
+  --red : #525CEB;
   --dark:#342e37;
 }
 
@@ -27,6 +27,7 @@ body{
   background: #f9f9f9;
   z-index: 100;
   transition: all 0.5s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 .ds{
   background-color: var(--red);
@@ -231,7 +232,7 @@ body{
 .home-section{
   
   position: absolute;
-  background-color:#f1f0f0;
+
   
   left: 260px;
   width: calc(100% - 260px);
@@ -374,7 +375,6 @@ body{
   
   display: flex;
   flex-direction: column;
-  
   align-items: center;
   padding-top: 120px;
   height: 100%;
@@ -391,7 +391,22 @@ body{
 }
 
 
+.contenu {
+    background-color: #f2f2f2; /* Background color */
+    padding: 50px; /* Padding around the content inside the div */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 10px; /* Border radius for rounded corners */
+    text-align: center; /* Center align the content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift effect */
+    margin: 20px; /* Margin to create space around the div */
+}
 
+/* Styles for the h1 inside the container div */
+.contenu h1 {
+    font-size: 100px;
+    color: #333; /* Text color */
+    font-family: 'Arial', sans-serif; /* Font family */
+}
 
 
 

@@ -46,6 +46,9 @@ public class Niveau {
         this.description = description;
     }
 
-
+    public String toString()
+    {
+        return this.getNomNiveau();
+    }
 
 }

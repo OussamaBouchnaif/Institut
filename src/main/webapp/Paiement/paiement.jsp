@@ -10,45 +10,53 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/Style/style.css">
 </head>
 <body>
-<jsp:include page="../head.jsp" />
+<jsp:include page="../sidbar.jsp" />
 
 <%
         Long id = (Long)request.getAttribute("id");
         Etudiant etudiant = (Etudiant)request.getAttribute("etudiant") ;
 %>
-<div class="container login ">
-    <div class="roww">
-        <div class="user-actions">
-            <form action="${pageContext.request.contextPath}/paiementEtudiant?idE=<%= id %>" method="post">
-                <input type="hidden" name="" value="<%= id %>" />
-                <div class="form_group">
-                    <label>First Name<span>*</span></label>
-                    <input type="text" class="form-control" value="<%= etudiant.getNom() %>" name="nom" /><br>
-                </div>
-                <div class="form_group">
-                    <label>Last Name  <span>*</span></label>
-                    <input type="text" class="form-control" value="<%= etudiant.getPrenom()%>" name="prenom" /><br>
-                </div>
-                <div class="form_group">
-                    <label>Montant <span>*</span></label>
-                    <input type="text" class="form-control"  name="montant" /><br>
-                </div>
-                <select name="methode" class="form-select">
-                    <option value="">Sélectionnez une methode</option>
-                    <option value="">Cash</option>
-                    <option value="">Pypal</option>
-                    <option value="">Cart</option>
+<section class="home-section">
+    <jsp:include page="../head.jsp" />
+    <div class="content">
+        <div class="container login ">
+            <div class="roww">
+                <div class="user-actions">
+                    <form action="${pageContext.request.contextPath}/paiementEtudiant?idE=<%= id %>" method="post">
+                        <input type="hidden" name="" value="<%= id %>" />
+                        <div class="form_group">
+                            <label>First Name<span>*</span></label>
+                            <input type="text" class="form-control" value="<%= etudiant.getNom() %>" name="nom" /><br>
+                        </div>
+                        <div class="form_group">
+                            <label>Last Name  <span>*</span></label>
+                            <input type="text" class="form-control" value="<%= etudiant.getPrenom()%>" name="prenom" /><br>
+                        </div>
+                        <div class="form_group">
+                            <label>Montant <span>*</span></label>
+                            <input type="text" class="form-control"  name="montant" /><br>
+                        </div>
+                        <select name="methode" class="form-select">
+                            <option value="">Sélectionnez une methode</option>
+                            <option value="">Cash</option>
+                            <option value="">Pypal</option>
+                            <option value="">Cart</option>
 
-                </select><br>
-                <div class="form_group group_3 ">
-                    <button class="btn btn-primary" type="submit">Ajouter Paiement Etudiant</button>
+                        </select><br>
+                        <div class="form_group group_3 ">
+                            <button class="btn btn-primary" type="submit">Ajouter Paiement Etudiant</button>
+                        </div>
+
+
+                    </form>
+
                 </div>
-
-
-            </form>
-
+            </div>
         </div>
+
     </div>
-</div>
+
+</section>
+
 </body>
 </html>

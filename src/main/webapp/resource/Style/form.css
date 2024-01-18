@@ -1,6 +1,4 @@
-.login{
-    margin-top: 50px;
-}
+
 .roww{
     margin-top: 50px;
     width: 50%;
@@ -10,19 +8,4 @@
 }
 .roww .form_group{
     width: 100%;
-}
-.content {
-    font-size:15rem ;
-    width: 50%;
-    margin: auto;
-    margin-top: 20rem;
-    padding: 50px;
-    border: 1px solid #ccc;
-    text-align: center;
-    background-color: #f0f0f0;
-}
-
-
-.content h1 {
-    color: #333;
 }

@@ -22,54 +22,65 @@
     List<Formateur> formateurList = (List<Formateur>) request.getAttribute("formateur");
 
 %>
-<jsp:include page="../head.jsp" />
-<div class="container login">
-    <div class="roww">
-        <div class="user-actions">
-            <form action="${pageContext.request.contextPath}/addSeance" method="post">
-                <div class="form_group">
-                    <label>Date Debut<span>*</span></label>
-                    <input type="datetime-local" class="form-control" name="datedebut" /><br>
+    <jsp:include page="../sidbar.jsp" />
+
+
+    <section class="home-section">
+        <jsp:include page="../head.jsp" />
+        <div class="content">
+            <div class="container login">
+                <div class="roww">
+                    <div class="user-actions">
+                        <form action="${pageContext.request.contextPath}/addSeance" method="post">
+                            <div class="form_group">
+                                <label>Date Debut<span>*</span></label>
+                                <input type="datetime-local" class="form-control" name="datedebut" /><br>
+                            </div>
+                            <div class="form_group">
+                                <label>Date Fin<span>*</span></label>
+                                <input type="datetime-local" class="form-control" name="datefin" /><br>
+                            </div>
+
+                            <select name="salleid" class="form-select">
+                                <option value="null">Sélectionnez une Salle</option>
+
+
+                                <% for (Salle salle : sallList) { %>
+                                <option value="<%= salle.getId() %>"><%= salle.getNomSalle() %></option>
+                                <% } %>
+                            </select><br>
+                            <select name="groupeId" class="form-select">
+                                <option value="null">Sélectionnez un Groupe</option>
+
+
+                                <% for (Groupe groupe : groupList) { %>
+                                <option value="<%= groupe.getId() %>"><%= groupe.getNomGroupe() %></option>
+                                <% } %>
+                            </select><br>
+                            <select name="formateurid" class="form-select">
+                                <option value="null">Sélectionnez un Formateur</option>
+
+
+                                <% for (Formateur formateur : formateurList) { %>
+                                <option value="<%= formateur.getId() %>"><%= formateur.getNom() %></option>
+                                <% } %>
+                            </select><br>
+                            <div class="form_group group_3 ">
+                                <button class="btn btn-primary" type="submit">Ajouter Seance</button>
+                            </div>
+
+
+                        </form>
+
+                    </div>
                 </div>
-                <div class="form_group">
-                    <label>Date Fin<span>*</span></label>
-                    <input type="datetime-local" class="form-control" name="datefin" /><br>
-                </div>
-
-                <select name="salleid" class="form-select">
-                    <option value="null">Sélectionnez une Salle</option>
-
-
-                    <% for (Salle salle : sallList) { %>
-                    <option value="<%= salle.getId() %>"><%= salle.getNomSalle() %></option>
-                    <% } %>
-                </select><br>
-                <select name="groupeId" class="form-select">
-                    <option value="null">Sélectionnez un Groupe</option>
-
-
-                    <% for (Groupe groupe : groupList) { %>
-                    <option value="<%= groupe.getId() %>"><%= groupe.getNomGroupe() %></option>
-                    <% } %>
-                </select><br>
-                <select name="formateurid" class="form-select">
-                    <option value="null">Sélectionnez un Formateur</option>
-
-
-                    <% for (Formateur formateur : formateurList) { %>
-                    <option value="<%= formateur.getId() %>"><%= formateur.getNom() %></option>
-                    <% } %>
-                </select><br>
-                <div class="form_group group_3 ">
-                    <button class="btn btn-primary" type="submit">Ajouter Seance</button>
-                </div>
-
-
-            </form>
+            </div>
 
         </div>
-    </div>
-</div>
+
+    </section>
+
+
 
 </body>
 </html>

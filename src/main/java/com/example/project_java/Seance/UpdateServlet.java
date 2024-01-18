@@ -37,7 +37,7 @@ public class UpdateServlet extends HttpServlet {
         List<Formateur> formateurList = formateur.getAllFormateur();
 
         GroupeService groupes = Factory.get(GroupeService.class);
-        List<Groupe> groupList = groupes.getAllGroupe();
+        List<Groupe> groupList = groupes.getAllGroupes();
 
         SalleService salle = Factory.get(SalleService.class);
         List<Salle> salleList = salle.getAllSalle();

@@ -1,69 +1,103 @@
 <%@ page import="entity.Etudiant" %>
 <%@ page import="java.util.ArrayList" %>
-
 <%@ page import="java.util.List" %>
-<%@ page import="Services.EtudiantService" %>
-<%@ page import="entity.Factory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/4598e20a86.js" crossorigin="anonymous"></script>
 
     <title>Etudiant</title>
 </head>
 <body>
-    <jsp:include page="../head.jsp" />
-    <div class="container">
-        <h1>Gestion des Etudiants</h1>
-        <a href="${pageContext.request.contextPath}/addEtudiant" class="btn btn-primary">Ajouter un Etudiant</a>
-        <a href="${pageContext.request.contextPath}/addEtudiant" class="btn btn-success">Ajouter un Groupe</a>
-        <a href="${pageContext.request.contextPath}/addEtudiant" class="btn btn-info">Ajouter un Niveau</a>
-        <%
-            List<Etudiant> etudiants = (List<Etudiant>) request.getAttribute("etudiants");
-            if (etudiants != null) {
 
-        %>
+    <jsp:include page="../sidbar.jsp"/>
 
-        <table id="todoTable" class="table table-hover mt-5" >
-            <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Groupe</th>
-                <th scope="col">Niveau</th>
-                <th scope="col" class="text-center" colspan="2"> Actions </th>
-            </tr>
-            </thead>
-            <tbody>
-                <%for (Etudiant e : etudiants) {
-                        %>
-            <tr>
-                <td><%= e.getId() %></td>
-                <td><%= e.getNom() %></td>
-                <td><%= e.getPrenom() %></td>
-                <td><%= e.getGroupe() %></td>
-                <td><%= e.getNiveau() %></td>
-                <td class="text-center"><a href="${pageContext.request.contextPath}/paiementEtudiant?id=<%= e.getId() %>"><i class="fa-solid fa-money-bill text-warning"></i></a></td>
-                <td class="text-center"><a href="${pageContext.request.contextPath}/deleteEtudiant?id=<%= e.getId() %>"><i class="fa-solid fa-trash text-danger"></i></a></td>
-                <td  class="text-center"><a href="${pageContext.request.contextPath}/updateEtudiant?id=<%= e.getId() %>"><i  class="fa-solid fa-pen-to-square text-warning"></i></a></td>
+    <section class="home-section">
+        <jsp:include page="../head.jsp" />
+        <div class="content">
+            <div class="container ">
 
-            </tr>
+                <a href="${pageContext.request.contextPath}/addEtudiant" class="btn btn-primary">Ajouter un Etudiant</a>
+
+                <a href="${pageContext.request.contextPath}/addEtudiant" class="btn btn-primary">Ajouter un Niveau</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Ajouter Groupe
+                </button>
                 <%
+                    List<Etudiant> etudiants = (List<Etudiant>) request.getAttribute("etudiants");
+                    if (etudiants != null) {
+
+                %>
+
+                <table id="todoTable" class="table table-hover mt-5" >
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Groupe</th>
+                        <th scope="col">Niveau</th>
+                        <th scope="col" class="text-center" colspan="2"> Actions </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <%for (Etudiant e : etudiants) {
+                        %>
+                    <tr>
+                        <td><%= e.getId() %></td>
+                        <td><%= e.getNom() %></td>
+                        <td><%= e.getPrenom() %></td>
+                        <td><%= e.getGroupe() %></td>
+                        <td><%= e.getNiveau() %></td>
+                        <td class="text-center"><a href="${pageContext.request.contextPath}/paiementEtudiant?id=<%= e.getId() %>"><i class="fa-solid fa-money-bill text-warning"></i></a></td>
+                        <td class="text-center"><a href="${pageContext.request.contextPath}/deleteEtudiant?id=<%= e.getId() %>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+                        <td  class="text-center"><a href="${pageContext.request.contextPath}/updateEtudiant?id=<%= e.getId() %>"><i  class="fa-solid fa-pen-to-square text-warning"></i></a></td>
+
+                    </tr>
+                        <%
 
                         }
                     %>
-            <tbody>
-        </table>
-        <%
-        } else {
-        %>
-        <p>Aucun Etudiant pour le moment.</p>
-        <%
-            }
-        %>
+                    <tbody>
+                </table>
+                <%
+                } else {
+                %>
+                <p>Aucun Etudiant pour le moment.</p>
+                <%
+                    }
+                %>
 
-    </div>
+
+            </div>
+
+        </div>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Groupe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="${pageContext.request.contextPath}/addgroupe" method="post" class="mx-auto" >
+                            <div class="form_group">
+                                <label>Nom du Groupe<span>*</span></label>
+                                <input type="text" class="form-control" name="nomGroupe" required />
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 </body>
 </html>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/Style/style.css">
 </head>
 <body>
-<jsp:include page="../head.jsp" />
+<jsp:include page="../sidbar.jsp" />
 
 <%
     long id = (Long) request.getAttribute("id");
@@ -21,46 +21,53 @@
     List<Groupe> groupList = (List<Groupe>) request.getAttribute("groupe");
 
 %>
+<section class="home-section">
+    <jsp:include page="../head.jsp" />
+    <div class="content">
+        <div class="container login">
+            <div class="roww">
+                <div class="user-actions">
+                    <form action="${pageContext.request.contextPath}/updateEtudiant" method="post">
+                        <input type="hidden" name="id" value="<%= id %>">
+                        <div class="form_group">
+                            <label>First Name<span>*</span></label>
+                            <input type="text" class="form-control" name="nom" value="<%= etudiant.getNom()%>" /><br>
+                        </div>
+                        <div class="form_group">
+                            <label>Last Name  <span>*</span></label>
+                            <input type="text" class="form-control" name="prenom" value="<%= etudiant.getPrenom()%>"/><br>
+                        </div>
+                        <select name="niveauId" class="form-select">
+                            <option value="">Sélectionnez un niveau</option>
 
-<div class="container login">
-    <div class="roww">
-        <div class="user-actions">
-            <form action="${pageContext.request.contextPath}/updateEtudiant" method="post">
-                <input type="hidden" name="id" value="<%= id %>">
-                <div class="form_group">
-                    <label>First Name<span>*</span></label>
-                    <input type="text" class="form-control" name="nom" value="<%= etudiant.getNom()%>" /><br>
+
+                            <% for (Niveau niveau : niveauxList) { %>
+                            <option value="<%= niveau.getId() %>"><%= niveau.getNomNiveau() %></option>
+                            <% } %>
+                        </select><br>
+                        <select name="groupeId" class="form-select">
+                            <option value="">Sélectionnez un Groupe</option>
+
+
+                            <% for (Groupe groupe : groupList) { %>
+                            <option value="<%= groupe.getId() %>"><%= groupe.getNomGroupe() %></option>
+                            <% } %>
+                        </select><br>
+                        <div class="form_group group_3 ">
+                            <button class="btn btn-warning" type="submit">Update Etudiant</button>
+                        </div>
+
+
+                    </form>
+
                 </div>
-                <div class="form_group">
-                    <label>Last Name  <span>*</span></label>
-                    <input type="text" class="form-control" name="prenom" value="<%= etudiant.getPrenom()%>"/><br>
-                </div>
-                <select name="niveauId" class="form-select">
-                    <option value="">Sélectionnez un niveau</option>
-
-
-                    <% for (Niveau niveau : niveauxList) { %>
-                    <option value="<%= niveau.getId() %>"><%= niveau.getNomNiveau() %></option>
-                    <% } %>
-                </select><br>
-                <select name="groupeId" class="form-select">
-                    <option value="">Sélectionnez un Groupe</option>
-
-
-                    <% for (Groupe groupe : groupList) { %>
-                    <option value="<%= groupe.getId() %>"><%= groupe.getNomGroupe() %></option>
-                    <% } %>
-                </select><br>
-                <div class="form_group group_3 ">
-                    <button class="btn btn-warning" type="submit">Update Etudiant</button>
-                </div>
-
-
-            </form>
-
+            </div>
         </div>
+
     </div>
-</div>
+
+</section>
+
 
 </body>
 </html>

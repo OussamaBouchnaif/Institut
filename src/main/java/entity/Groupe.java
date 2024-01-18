@@ -60,6 +60,11 @@ public class Groupe {
         this.membres = membres;
     }
 
+    public String toString()
+    {
+        return  this.getNomGroupe();
+    }
+
 
 
 }
