@@ -23,7 +23,7 @@
 
                 <a href="${pageContext.request.contextPath}/addSalle" class="btn btn-primary mt-5">Ajouter salle</a>
 
-                <table class="table table-bordered mt-5">
+                <table class="table table-hover mt-5">
                     <thead>
                     <tr>
                         <th>ID</th>

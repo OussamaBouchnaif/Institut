@@ -25,7 +25,7 @@
 
 
 
-                <table class="table table-bordered mt-5">
+                <table class="table table-hover mt-5">
                     <thead>
                     <tr>
                         <th>ID</th>

@@ -14,7 +14,7 @@
         <li >
             <div class="iocn-link">
                 <a href="listEtudiant">
-                    <i class="fa-solid fa-users"></i>
+                    <i class="fa-solid fa-graduation-cap"></i>
                     <span class="link_name">Etudiant</span>
                 </a>
 
@@ -26,7 +26,7 @@
         <li >
             <div class="iocn-link">
                 <a href="listFormateur">
-                    <i class="fa-solid fa-users"></i>
+                    <i class="fa-solid fa-user-tie"></i>
                     <span class="link_name">Formateur</span>
                 </a>
 
@@ -38,7 +38,7 @@
         <li >
             <div class="iocn-link">
                 <a href="listSalle">
-                    <i class="fa-solid fa-users"></i>
+                    <i class="fa-solid fa-school-circle-check"></i>
                     <span class="link_name">Salle</span>
                 </a>
 
@@ -50,7 +50,7 @@
         <li >
             <div class="iocn-link">
                 <a href="listSeance">
-                    <i class="fa-solid fa-users"></i>
+                    <i class="fa-regular fa-clock"></i>
                     <span class="link_name">Seance</span>
                 </a>
 
@@ -62,7 +62,7 @@
         <li >
             <div class="iocn-link">
                 <a href="listPaiement">
-                    <i class="fa-solid fa-users"></i>
+                    <i class="fa-solid fa-money-bill"></i>
                     <span class="link_name">Paiement</span>
                 </a>
 
