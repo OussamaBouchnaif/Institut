@@ -3,6 +3,7 @@ package Services;
 import entity.Groupe;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,7 +14,7 @@ public class GroupeService {
     private EntityManagerFactory emf;
 
     public GroupeService() {
-        this.emf = emf;
+        this.emf = Persistence.createEntityManagerFactory("default");
     }
 
     public static GroupeService getInstance() {
