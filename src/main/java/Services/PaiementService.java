@@ -6,6 +6,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.util.List;
+
 public class PaiementService {
 
     private static PaiementService ps = new PaiementService();
@@ -16,9 +18,14 @@ public class PaiementService {
     {
         emf = Persistence.createEntityManagerFactory("default");
     }
-    public static PaiementService getPaimentService()
-    {
-        return ps;
+
+    public List<Paiement> getPaimentService() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery("SELECT p FROM Paiement p", Paiement.class).getResultList();
+        } finally {
+            em.close();
+        }
     }
     public void createPaiement(long idE,float montant,String methode)
     {
