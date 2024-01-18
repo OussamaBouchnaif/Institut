@@ -42,6 +42,7 @@ public class updateServlet extends HttpServlet {
         String email = req.getParameter("email");
         String adress = req.getParameter("adress");
         String tele = req.getParameter("tele");
+        String ville = req.getParameter("ville");
 
         if(!nom.isEmpty() && !prenom.isEmpty() && !email.isEmpty() && !adress.isEmpty() && !tele.isEmpty() )
         {

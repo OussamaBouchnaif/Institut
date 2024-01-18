@@ -1,9 +1,6 @@
 package Services;
 
-import entity.Etudiant;
 import entity.Formateur;
-import entity.Groupe;
-import entity.Niveau;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -52,7 +49,7 @@ public class FormateurService {
             em.close();
         }
     }
-    public void updateFormateur(long idFormateur , String nom, String prenom,String adress,String numero,String email ) {
+    public void updateFormateur(long idFormateur , String nom, String prenom, String adress, String numero, String email) {
         EntityManager em = emf.createEntityManager();
 
         try {

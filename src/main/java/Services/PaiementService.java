@@ -19,9 +19,14 @@ public class PaiementService {
     {
         emf = Persistence.createEntityManagerFactory("default");
     }
-    public static PaiementService getPaimentService()
-    {
-        return ps;
+
+    public List<Paiement> getPaimentService() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery("SELECT p FROM Paiement p", Paiement.class).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
 

@@ -21,6 +21,7 @@ public class Etudiant extends Personnee {
         super(firstName,lastName,adress,numtele);
         this.niveau = niveau;
         this.groupe = groupe;
+        this.numeroTelephone = numtele;
     }
 
     public Etudiant() {
@@ -44,6 +45,13 @@ public class Etudiant extends Personnee {
 
     public void setGroupe(Groupe groupe) {
         this.groupe = groupe;
+    }
+    public String getNumtele() {
+        return numeroTelephone;
+    }
+
+    public void setNumtele(String numtele) {
+        this.numeroTelephone = numtele;
     }
 
 

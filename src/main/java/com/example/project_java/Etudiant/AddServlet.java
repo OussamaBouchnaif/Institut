@@ -54,7 +54,7 @@ public class AddServlet extends HttpServlet {
             long gId = Long.parseLong(groupeId);
             long nId = Long.parseLong(niveauId);
             EtudiantService esc = Factory.get(EtudiantService.class);
-            esc.cerateEtudiant(nom,prenom,nId,gId,adress,numtele);
+            esc.createEtudiant(nom,prenom,nId,gId,adress,numtele);
             resp.sendRedirect(req.getContextPath() + "/listEtudiant");
 
 
