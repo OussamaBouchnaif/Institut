@@ -4,8 +4,6 @@ import entity.Niveau;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-
-import java.time.LocalDateTime;
 import java.util.List;
 public class NiveauService {
 
@@ -24,9 +22,19 @@ public class NiveauService {
         }
     }
 
-    public void createNiveau(Niveau niveau) {
-    }
 
-    public void createNiveau(String nomNiveau, LocalDateTime dateCreation) {
+
+    public void createNiveau(String nomNivea ) {
+
+        EntityManager e = emf.createEntityManager();
+        e.getTransaction().begin();
+
+        Niveau n = new Niveau();
+        n.setNomNiveau(nomNivea);
+        n.setDescription("desc");
+        e.persist(n);
+        e.getTransaction().commit();
+        e.close();
+
     }
 }

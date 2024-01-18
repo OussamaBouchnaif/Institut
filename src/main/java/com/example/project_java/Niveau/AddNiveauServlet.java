@@ -25,22 +25,18 @@ public class AddNiveauServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("Niveau/AddNiveau.jsp");
-        dispatcher.forward(req, resp);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String nomNiveau = req.getParameter("nomNiveau");
-        // Parse the date string to LocalDateTime
-        LocalDateTime dateCreation = LocalDateTime.now(); // Assuming you want to use the current date and time
-
         if (nomNiveau != null) {
             NiveauService niveauService = Factory.get(NiveauService.class);
-            niveauService.createNiveau(nomNiveau, dateCreation);
-            resp.sendRedirect(req.getContextPath() + "/listEtudiant"); // Redirige vers la page AddEtudiant.jsp
+            niveauService.createNiveau(nomNiveau);
+            resp.sendRedirect(req.getContextPath() + "/listEtudiant");
         } else {
-            // Handle the case where the parameters are not valid
+
             resp.sendRedirect(req.getContextPath() + "/addNiveau");
         }
     }
