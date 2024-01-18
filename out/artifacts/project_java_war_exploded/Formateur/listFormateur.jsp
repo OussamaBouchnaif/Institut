@@ -14,58 +14,67 @@
     <title>Formateur</title>
 </head>
 <body>
-<jsp:include page="../head.jsp" />
-<div class="container">
-    <h1>Gestion des Formateurs</h1>
-    <a href="${pageContext.request.contextPath}/addFormateur" class="btn btn-primary">Ajouter un Formateur</a>
     <%
 
         List<Formateur> formateurs = (List<Formateur>) request.getAttribute("formateurs");
         if (formateurs != null) {
 
     %>
+    <jsp:include page="../sidbar.jsp" />
+    <section class="home-section">
+        <jsp:include page="../head.jsp" />
+        <div class="content">
+            <div class="container">
 
-    <table id="todoTable" class="table table-hover mt-5" >
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Adress</th>
-            <th scope="col">Tele</th>
-            <th scope="col">Email</th>
-            <th scope="col" class="text-center" colspan="2"> Actions </th>
-        </tr>
-        </thead>
-        <tbody>
-            <%for (Formateur f : formateurs) {
+                <a href="${pageContext.request.contextPath}/addFormateur" class="btn btn-primary">Ajouter un Formateur</a>
+
+
+                <table id="todoTable" class="table table-hover mt-5" >
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Adress</th>
+                        <th scope="col">Tele</th>
+                        <th scope="col">Email</th>
+                        <th scope="col" class="text-center" colspan="2"> Actions </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <%for (Formateur f : formateurs) {
+                        %>
+                    <tr>
+                        <td><%= f.getId() %></td>
+                        <td><%= f.getNom() %></td>
+                        <td><%= f.getPrenom() %></td>
+                        <td><%= f.getAdresse() %></td>
+                        <td><%= f.getNumeroTelephone() %></td>
+                        <td><%= f.getEmail() %></td>
+
+                        <td class="text-center"><a href="${pageContext.request.contextPath}/deleteFormateur?id=<%= f.getId() %>"><i class="fa-solid fa-trash text-danger"></i></a></td>
+                        <td  class="text-center"><a href="${pageContext.request.contextPath}/updateFormateur?id=<%= f.getId() %>"><i  class="fa-solid fa-pen-to-square text-warning"></i></a></td>
+
+                    </tr>
+                        <%
+
+                        }
                     %>
-        <tr>
-            <td><%= f.getId() %></td>
-            <td><%= f.getNom() %></td>
-            <td><%= f.getPrenom() %></td>
-            <td><%= f.getAdresse() %></td>
-            <td><%= f.getNumeroTelephone() %></td>
-            <td><%= f.getEmail() %></td>
-
-            <td class="text-center"><a href="${pageContext.request.contextPath}/deleteFormateur?id=<%= f.getId() %>"><i class="fa-solid fa-trash text-danger"></i></a></td>
-            <td  class="text-center"><a href="${pageContext.request.contextPath}/updateFormateur?id=<%= f.getId() %>"><i  class="fa-solid fa-pen-to-square text-warning"></i></a></td>
-
-        </tr>
-            <%
-
+                    <tbody>
+                </table>
+                <%
+                } else {
+                %>
+                <p>Aucun Formateur pour le moment.</p>
+                <%
                     }
                 %>
-        <tbody>
-    </table>
-    <%
-    } else {
-    %>
-    <p>Aucun Formateur pour le moment.</p>
-    <%
-        }
-    %>
 
-</div>
+            </div>
+
+        </div>
+
+    </section>
+
 </body>
 </html>

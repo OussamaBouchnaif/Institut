@@ -37,17 +37,23 @@ public class SalleService {
             em.close();
         }
     }
-    public void cerateSalle(int capacite,String nomSalle ){
+    public void cerateSalle(int capacite, String nomSalle) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
 
+
+            em.createNativeQuery("INSERT INTO Salle (NOMSALLE, CAPACITE) VALUES (?, ?)")
+                    .setParameter(1, nomSalle)
+                    .setParameter(2, capacite)
+                    .executeUpdate();
+
             Salle s = new Salle(nomSalle,capacite);
             em.persist(s);
 
+
             em.getTransaction().commit();
-        }
-        finally {
+        } finally {
             em.close();
         }
     }
