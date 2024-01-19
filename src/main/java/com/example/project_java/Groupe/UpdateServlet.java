@@ -32,7 +32,7 @@
 //        req.setAttribute("salle", salle);
 //        req.setAttribute("id", id);
 //
-//        RequestDispatcher dispatcher = req.getRequestDispatcher("Salle/updateSalle.jsp");
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("Salle/updateUser.jsp");
 //        dispatcher.forward(req, resp);
 //    }
 //

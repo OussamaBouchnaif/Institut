@@ -21,4 +21,20 @@ public class NiveauService {
             em.close();
         }
     }
+
+
+
+    public void createNiveau(String nomNivea ) {
+
+        EntityManager e = emf.createEntityManager();
+        e.getTransaction().begin();
+
+        Niveau n = new Niveau();
+        n.setNomNiveau(nomNivea);
+        n.setDescription("desc");
+        e.persist(n);
+        e.getTransaction().commit();
+        e.close();
+
+    }
 }

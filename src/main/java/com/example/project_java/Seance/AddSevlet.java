@@ -49,7 +49,7 @@ public class AddSevlet extends HttpServlet {
         Long groupeId = Long.valueOf(req.getParameter("groupeId"));
         Long formateurid = Long.valueOf(req.getParameter("formateurid"));
         Long salleid = Long.valueOf(req.getParameter("salleid"));
-        if (dateDebut != null && groupeId != null && formateurid != null && salleid != null && datefin.isAfter(dateDebut)) {
+        if (dateDebut != null  && datefin.isAfter(dateDebut)) {
 
             SeanceService ss = Factory.get(SeanceService.class);
             ss.createSeance(groupeId,salleid,formateurid,dateDebut,datefin);

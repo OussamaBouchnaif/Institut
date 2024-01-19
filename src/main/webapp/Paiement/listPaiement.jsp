@@ -25,7 +25,7 @@
 
 
 
-                <table class="table table-bordered mt-5">
+                <table class="table table-hover mt-5">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -34,7 +34,6 @@
                         <th>Groupe</th>
                         <th>Niveau</th>
                         <th>Date </th>
-                        <th>Methode</th>
                         <th>Total</th>
                     </tr>
                     </thead>
@@ -47,7 +46,6 @@
                         <td><%= p.getEtudiant().getGroupe().toString() %></td>
                         <td><%= p.getEtudiant().getNiveau().toString() %></td>
                         <td><%= p.getDatePaiement() %></td>
-                        <td><%= p.getMethode() %></td>
                         <td><%= p.getMontant() %>$</td>
                         <td class="text-center">
                             <a href="${pageContext.request.contextPath}/deletePaiement?id=<%= p.getId() %>">

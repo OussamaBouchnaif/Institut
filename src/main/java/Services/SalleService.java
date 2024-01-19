@@ -42,15 +42,16 @@ public class SalleService {
         try {
             em.getTransaction().begin();
 
-//<<<<<<< HEAD
+
+
+
             em.createNativeQuery("INSERT INTO Salle (NOMSALLE, CAPACITE) VALUES (?, ?)")
                     .setParameter(1, nomSalle)
                     .setParameter(2, capacite)
                     .executeUpdate();
-//=======
-            Salle s = new Salle(nomSalle,capacite);
+             Salle s = new Salle(nomSalle,capacite);
             em.persist(s);
-//>>>>>>> f41fc184a8ab93f83360dbfde18c6553cdd0e05f
+
 
             em.getTransaction().commit();
         } finally {

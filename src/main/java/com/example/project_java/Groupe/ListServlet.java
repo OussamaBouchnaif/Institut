@@ -28,7 +28,7 @@
 //        List<Salle> salles = salleService.getAllSalle();
 //
 //        req.setAttribute("salles", salles);
-//        RequestDispatcher dispatcher = req.getRequestDispatcher("Salle/ListSalle.jsp");
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("Salle/listUser.jsp");
 //        dispatcher.forward(req, resp);
 //    }
 //}
