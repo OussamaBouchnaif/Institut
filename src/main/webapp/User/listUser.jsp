@@ -13,25 +13,26 @@
 <body>
 
     <jsp:include page="../sidbar.jsp" />
-    <%
-        List<User> users = (List<User>) request.getAttribute("Users");
-        if (salles != null) {
-    %>
+
     <section class="home-section">
         <jsp:include page="../head.jsp" />
         <div class="content">
             <div class="container">
-
-                <a href="${pageContext.request.contextPath}/addSalle" class="btn btn-primary mt-5">Ajouter salle</a>
+                <%
+                    List<User> users = (List<User>) request.getAttribute("users");
+                    if (users != null) {
+                %>
+                <a href="${pageContext.request.contextPath}/addUser" class="btn btn-primary mt-5">Ajouter User</a>
 
                 <table class="table table-bordered mt-5">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nom de la Salle</th>
-                        <th>Capacité</th>
-                        <th>Action</th>
-                        <th>Action</th>
+                        <th>Nom</th>
+                        <th>prenom</th>
+                        <th>Email</th>
+                        <th>adress</th>
+                        <th>Telephone</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -40,9 +41,9 @@
                         <td><%= user.getId() %></td>
                         <td><%= user.getNom() %></td>
                         <td><%= user.getPrenom() %></td>
-                        <td><%= user.getNumeroTelephone() %></td>
                         <td><%= user.getEmail() %></td>
                         <td><%= user.getAdresse() %></td>
+                        <td><%= user.getNumeroTelephone() %></td>
 
 
 

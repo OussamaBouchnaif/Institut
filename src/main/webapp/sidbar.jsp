@@ -73,7 +73,7 @@
         </li>
         <li >
             <div class="iocn-link">
-                <a href="listUser">
+                <a href="listServlet">
                     <i class="fa-solid fa-user"></i>
                     <span class="link_name">User</span>
                 </a>

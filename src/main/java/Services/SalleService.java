@@ -41,17 +41,8 @@ public class SalleService {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-
-
-
-
-            em.createNativeQuery("INSERT INTO Salle (NOMSALLE, CAPACITE) VALUES (?, ?)")
-                    .setParameter(1, nomSalle)
-                    .setParameter(2, capacite)
-                    .executeUpdate();
              Salle s = new Salle(nomSalle,capacite);
             em.persist(s);
-
 
             em.getTransaction().commit();
         } finally {

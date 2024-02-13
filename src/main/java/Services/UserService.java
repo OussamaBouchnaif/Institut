@@ -34,7 +34,7 @@ public class UserService {
     public User getUserByEmail(String email) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class)
+            return em.createQuery("SELECT u FROM User u WHERE u.Email = :email", User.class)
                     .setParameter("email", email)
                     .getSingleResult();
         } catch (Exception e) {
@@ -48,7 +48,7 @@ public class UserService {
     public User authenticateUser(String email, String password) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createQuery("SELECT u FROM User u WHERE u.email = :email AND u.password = :password", User.class)
+            return em.createQuery("SELECT u FROM User u WHERE u.Email = :email AND u.password = :password", User.class)
                     .setParameter("email", email)
                     .setParameter("password", password)
                     .getSingleResult();

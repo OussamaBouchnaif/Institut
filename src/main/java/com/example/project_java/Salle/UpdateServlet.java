@@ -33,7 +33,7 @@ public class UpdateServlet extends HttpServlet {
         req.setAttribute("salle", salle);
         req.setAttribute("id", id);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("Salle/updateUser.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("Salle/updateSalle.jsp");
         dispatcher.forward(req, resp);
     }
 

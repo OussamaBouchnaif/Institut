@@ -39,6 +39,8 @@
                     <th scope="col">Id</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
+                    <th scope="col">Adress</th>
+                    <th scope="col">Tele</th>
                     <th scope="col">Groupe</th>
                     <th scope="col">Niveau</th>
                     <th scope="col" class="text-center" colspan="2"> Actions </th>
@@ -51,6 +53,8 @@
                     <td><%= e.getId() %></td>
                     <td><%= e.getNom() %></td>
                     <td><%= e.getPrenom() %></td>
+                    <td><%= e.getAdresse() %></td>
+                    <td><%= e.getNumtele() %></td>
                     <td><%= e.getGroupe() %></td>
                     <td><%= e.getNiveau() %></td>
                     <td class="text-center"><a href="${pageContext.request.contextPath}/paiementEtudiant?id=<%= e.getId() %>"><i class="fa-solid fa-money-bill text-warning"></i></a></td>

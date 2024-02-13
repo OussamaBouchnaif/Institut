@@ -21,10 +21,10 @@ public class LoginServlet extends HttpServlet {
         User user = userService.authenticateUser(email, password);
 
         if (user != null) {
-            // Successful login, you can redirect to another page or perform other actions
+
             response.sendRedirect("index.jsp");
         } else {
-            // Failed login, you may want to redirect back to the login page with an error message
+
             response.sendRedirect("Login.jsp?error=1");
         }
     }
